@@ -1,0 +1,24 @@
+Creating Volume from Dockerfile:
+
+1-	Create a Dockerfile with Following details: (nano Dockerfile)
+FROM  Ubuntu
+VOLUME  [“/myvolume”]
+
+2-	Create image from this Dockerfile:
+sudo docker build –t (imagename)
+
+3-	Now create and run container from the above image:
+sudo docker run –it --name (container name) (image name)  ubuntu bash
+
+4-	Now share volume with another container:
+Sudo docker run -it --name (new container name) –privileged=true --volume-from (first container name)   ubuntu bash
+
+Creating Volume from COMMAND LINE:
+
+1-	sudo docker run -it --name (container name) --privileged=true -v /volume2 ubuntu bash
+2-	Now map the volume with new container
+sudo docker run -it --name (new container name) --privileged=true --volumes-from (first container name) ubuntu bash
+
+Creating shared Volume with host :
+
+sudo docker run -it --name (container name) -v /home/sysadmin:/shared_folder --privileged=true ubuntu bash
