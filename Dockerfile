@@ -10,3 +10,4 @@ ADD key.tar.gz /imran
 
 COPY imran-intro /imran
 
+VOLUME ["/imran/myvulume"]
